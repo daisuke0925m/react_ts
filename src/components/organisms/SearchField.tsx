@@ -1,14 +1,13 @@
 import React, { ChangeEvent, FC, useCallback, useState } from 'react'
 import styles from 'styles/utility/flex.module.scss'
 import { SearchButton, TextInput } from 'components/atoms';
+import { useStringChangeEvent } from 'lib/customHooks';
 
 const SearchField: FC = () => {
 
     const [keyword, setKeyword] = useState<string>("");
 
-    const handleKeyword = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        setKeyword(event.target.value)
-    }, [setKeyword])
+    const handleKeyword = useStringChangeEvent(setKeyword)
 
 
     return (
