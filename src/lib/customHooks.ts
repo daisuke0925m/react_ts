@@ -9,3 +9,11 @@ export const useStringChangeEvent: UseChangeEvent<string> = (update) => {
         update(event.target.value);
     }, [update]);
 }
+
+export const useNumberChangeEvent: UseChangeEvent<number> = (update) => {
+    return useCallback((event: ChangeEvent<HTMLInputElement>) => {
+        if (/^[0-9]+$/.test(event.target.value)) {
+            update(Number(event.target.value));
+        }
+    }, [update]);
+}
