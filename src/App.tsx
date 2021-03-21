@@ -16,6 +16,12 @@ function App() {
     return (
         <Layout>
             <SearchFiled handleHotels={handleHotels} />
+            {hotels &&
+                hotels.map(h => {
+                    console.log(h)
+                }
+                )
+            }
         </Layout>
     );
 }
