@@ -1,29 +1,37 @@
-import React, { ChangeEvent, FC, useCallback, useState } from 'react'
-import styles from 'styles/utility/flex.module.scss'
-import { SearchButton, TextInput } from 'components/atoms';
-import { useStringChangeEvent } from 'lib/customHooks';
-import { searchHotels } from 'lib/hotels';
 
-const SearchField: FC = () => {
+import React, { FC, useState } from 'react';
+import flex from 'styles/utility/flex.module.scss';
+import { SearchButton, TextInput } from "components/atoms";
+import { useStringChangeEvent } from "lib/customHooks";
+import { searchHotels } from "lib/hotels";
+import { Hotels } from "types/hotels";
 
-    const [keyword, setKeyword] = useState<string>("");
+interface Props {
+    handleHotels: (fetchedHotels: Hotels) => void
+}
 
+const SearchField: FC<Props> = (props) => {
+    const { handleHotels } = props
+
+    const [keyword, setKeyword] = useState<string>("")
     const handleKeyword = useStringChangeEvent(setKeyword)
 
-
     return (
-        <div className={styles.flex__row_center}>
+        <div className={flex.flex__row_center}>
             <TextInput
                 onChange={handleKeyword}
-                type={"Foo"}
                 value={keyword}
+                type={"text"}
             />
             <SearchButton
                 label={"Search"}
-                onClick={() => searchHotels(keyword)}
+                onClick={async () => {
+                    const hotels = await searchHotels(keyword)
+                    handleHotels([...hotels])
+                }}
             />
         </div>
-    )
-}
+    );
+};
 
-export default SearchField
+export default SearchField;
