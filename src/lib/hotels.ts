@@ -5,7 +5,7 @@ export const searchHotels = async (keyword: string): Promise<void> => {
     try {
         const res = await axios.get(BASE_URL + '&applicationId=' + APP_ID + '&keyword=' + keyword)
         if (res.status == 200) {
-            console.log(res)
+            console.log(res.data)
         }
     } catch (e) {
         console.error(e)
