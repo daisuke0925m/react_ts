@@ -17,11 +17,11 @@ function App() {
             <SearchFiled handleHotels={handleHotels} />
             {hotels &&
                 hotels.map((h, i) =>
-                //  (
-                //     <p style={{ borderBottom: '1px solid black' }} key={i}>
-                //         (console.log(h))
-                //     </p>
-                // )
+                (
+                    <p style={{ borderBottom: '1px solid black' }} key={i}>
+                        (console.log(h))
+                    </p>
+                )
                 {
                     (console.log(h))
                 }
