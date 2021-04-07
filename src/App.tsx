@@ -16,13 +16,7 @@ function App() {
         <Layout>
             <SearchFiled handleHotels={handleHotels} />
             {hotels &&
-                hotels.map((h, i) =>
-                (
-                    <p style={{ borderBottom: '1px solid black' }} key={i}>
-                        (console.log(h))
-                    </p>
-                )
-                {
+                hotels.map((h, i) => {
                     (console.log(h))
                 }
                 )
